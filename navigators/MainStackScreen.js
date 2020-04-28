@@ -6,6 +6,7 @@ import { PRIMARY_COLOR } from '../assets/styles';
 import SwipeScreen from '../containers/SwipeScreen';
 import ProfileScreen from '../containers/ProfileScreen';
 import Filters from '../components/Filters';
+import TabNavigator from './TabNavigator';
 
 const MainStack = createStackNavigator();
 
@@ -30,7 +31,7 @@ const MainStackScreen = () => {
     >
       <MainStack.Screen
         name="SwipeScreen"
-        component={SwipeScreen}
+        component={TabNavigator}
         options={{
           headerTitle: () => (
             // <View style={{ alignItems: 'center' }}>

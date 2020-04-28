@@ -3,8 +3,7 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { View, StatusBar, StyleSheet } from 'react-native';
 import { ThemeProvider } from './context/ThemeContext';
-// import RootStackNavigator from './navigators/RootStackNavigator';
-import TabNavigator from './navigators/TabNavigator';
+import RootStackNavigator from './navigators/RootStackNavigator';
 
 export default function App() {
   return (
@@ -12,8 +11,7 @@ export default function App() {
       <NavigationContainer>
         <StatusBar barStyle="dark-content" />
         <View style={styles.container}>
-          <TabNavigator />
-          {/* <RootStackNavigator /> */}
+          <RootStackNavigator />
         </View>
       </NavigationContainer>
     </ThemeProvider>

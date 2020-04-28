@@ -2,7 +2,8 @@
 import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
-import RootStackNavigator from './RootStackNavigator';
+import SwipeScreen from '../containers/SwipeScreen';
+
 import { PRIMARY_COLOR } from '../assets/styles';
 import ProfileScreen from '../containers/Profile';
 import MessagesScreen from '../containers/Messages';
@@ -42,7 +43,7 @@ const TabNavigator = () => {
       />
       <Tab.Screen
         name="Swipe"
-        component={RootStackNavigator}
+        component={SwipeScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="ios-flame" size={size} color={color} />
