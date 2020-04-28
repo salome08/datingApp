@@ -43,4 +43,6 @@ target 'datingApp' do
 
   # react-native-cli autolinking
   use_native_modules!
+  pod 'rn-range-slider', :path => '../node_modules/rn-range-slider'
+
 end

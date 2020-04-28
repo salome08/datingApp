@@ -1,18 +1,23 @@
 import React from 'react';
 import { ScrollView, View, Text, ImageBackground, TouchableOpacity } from 'react-native';
-import { SimpleLineIcons } from '@expo/vector-icons';
-import styles from '../assets/styles';
+import { SimpleLineIcons, Ionicons } from '@expo/vector-icons';
+import styles, { PRIMARY_COLOR } from '../assets/styles';
 
 import ProfileItem from '../components/ProfileItem';
 // import Icon from '../../components/Icon';
 import Demo from '../assets/data/demo';
+import { ScreenStackHeaderRightView } from 'react-native-screens';
 
 const ProfileScreen = (props) => {
   const {
     route: {
-      params: { profileId },
+      params: { profileId, swipeLeft, swipeRight },
     },
+    navigation,
+    route,
   } = props;
+  console.log('swipeLeft', swipeLeft);
+  console.log('swipeRight', swipeRight);
   const {
     age,
     images,
@@ -25,6 +30,7 @@ const ProfileScreen = (props) => {
     name,
     // ashtags,
   } = Demo[profileId - 1];
+  console.log('nav options', route);
 
   const [visibleImage, setVisibleImage] = React.useState(0);
 
@@ -37,6 +43,14 @@ const ProfileScreen = (props) => {
 
     setVisibleImage(visibleImage + 1 === images.length ? 0 : visibleImage + 1);
   };
+
+  // console.log('navigation.setOptions', navigation.setOptions);
+  // React.useLayoutEffect(() => {
+  //   navigation.setOptions({
+  //     swipeLeft: swipeLeft || null,
+  //     swipeRight: swipeRight || null,
+  //   });
+  // }, [swipeLeft, swipeRight]);
 
   return (
     // eslint-disable-next-line global-require
@@ -68,25 +82,47 @@ const ProfileScreen = (props) => {
           info3={info3}
           info4={info4}
         />
-
-        <View style={styles.actionsProfile}>
-          <TouchableOpacity style={styles.circledButton}>
-            <Text style={styles.iconButton}>
-              {/* <Icon name="optionsH" /> */}
-              <SimpleLineIcons name="arrow-right" size={32} color="#FFA200" />
-            </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.roundedButton}>
-            <Text style={styles.iconButton}>
-              {/* <Icon name="chat" />
-               */}
-              <SimpleLineIcons name="arrow-right" size={32} color="#FFA200" />
-            </Text>
-            <Text style={styles.textButton}>Start chatting</Text>
-          </TouchableOpacity>
-        </View>
       </ScrollView>
+
+      <View style={styles.actionsCardItemProfile}>
+        <TouchableOpacity style={styles.miniButton}>
+          {/* <Text style={styles.star}> */}
+          {/* <Icon type="ionicon" name="eye" size={35} /> */}
+          <Ionicons name="md-star" size={32} color="#FFA200" />
+          {/* </Text> */}
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            navigation.goBack();
+            swipeLeft();
+          }}
+        >
+          {/* <Text style={styles.dislike}>
+              <Icon type="evilicon" name="dislike" />
+            </Text> */}
+          <Ionicons name="md-heart-dislike" size={32} color="#460115" />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            navigation.goBack();
+            swipeRight();
+          }}
+        >
+          {/* <Text style={styles.like}>
+              <Icon type="evilicon" name="like" />
+            </Text> */}
+          <Ionicons name="md-heart" size={32} color={PRIMARY_COLOR} />
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.miniButton}>
+          {/* <Text style={styles.flash}>
+              <Icon type="evilicon" name="flash" />
+            </Text> */}
+          <Ionicons name="md-flash" size={32} color="purple" />
+        </TouchableOpacity>
+      </View>
     </ImageBackground>
   );
 };

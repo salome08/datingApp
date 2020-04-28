@@ -36,7 +36,11 @@ const Messages = () => {
           initialNumToRender={4}
           renderItem={({ item }) => (
             <TouchableOpacity>
-              <Message image={item.image} name={item.name} lastMessage={item.message} />
+              <Message
+                image={item.images[0]}
+                name={item.name}
+                lastMessage={item.message}
+              />
             </TouchableOpacity>
           )}
           keyExtractor={(item) => item.id}

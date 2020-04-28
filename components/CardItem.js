@@ -9,14 +9,11 @@ import styles, { PRIMARY_COLOR } from '../assets/styles';
 
 const CardItem = ({
   actions,
-  description,
   ashtags,
   image,
-  matches,
   name,
   onPressLeft,
   onPressRight,
-  status,
   variant,
 }) => {
   // Custom styling
@@ -107,6 +104,7 @@ const CardItem = ({
                 // paddingVertical: 4,
               }}
               value={
+                // eslint-disable-next-line react/jsx-wrap-multilines
                 <Text style={{ color: PRIMARY_COLOR, fontSize: 12, margin: 2 }}>
                   {ashtag}
                 </Text>

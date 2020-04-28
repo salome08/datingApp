@@ -88,6 +88,15 @@ export default StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 20,
   },
+  actionsCardItemProfile: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    width: '100%',
+    bottom: '2%',
+    shadowOpacity: 0.2,
+  },
   button: {
     width: 60,
     height: 60,
@@ -187,6 +196,33 @@ export default StyleSheet.create({
     color: GRAY,
     fontSize: 12,
     paddingTop: 5,
+  },
+
+  filtersTitle: {
+    color: PRIMARY_COLOR,
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  filtersSubtitle: {
+    color: 'gray',
+    fontSize: 14,
+    fontWeight: 'bold',
+  },
+  simpleCardItem: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginVertical: '2%',
+    paddingHorizontal: '4%',
+    // backgroundColor: '#32e5',
+  },
+  simpleCardSliderItem: {
+    flex: 1,
+    marginVertical: '2%',
+    paddingHorizontal: '4%',
+    alignItems: 'stretch',
+    justifyContent: 'center',
   },
 
   // COMPONENT - PROFILE ITEM
@@ -335,6 +371,7 @@ export default StyleSheet.create({
   actionsProfile: {
     justifyContent: 'center',
     flexDirection: 'row',
+    backgroundColor: 'transparent',
     alignItems: 'center',
   },
   iconButton: { fontFamily: ICON_FONT, fontSize: 20, color: WHITE },

@@ -1,20 +1,17 @@
 /* eslint-disable react/no-this-in-sfc */
 import React from 'react';
-import { View, ImageBackground, Text, TouchableHighlight } from 'react-native';
-import { Modal } from 'react-native-modal';
-import { withRouter } from 'react-router';
+import { View, TouchableHighlight } from 'react-native';
 import CardStack, { Card } from 'react-native-card-stack-swiper';
-import { TapGestureHandler, State } from 'react-native-gesture-handler';
-import { createStackNavigator } from '@react-navigation/stack';
-import Filters from '../components/Filters';
+import { useNavigation } from '@react-navigation/native';
 import CardItem from '../components/CardItem';
 
-import styles, { PRIMARY_COLOR } from '../assets/styles';
+import styles from '../assets/styles';
 import Demo from '../assets/data/demo';
-import { NavigationContainer } from '@react-navigation/native';
+import SlideModal from '../components/SlideModal';
 
-const SwipeScreenTest = ({ navigation }) => {
-  React.useEffect(() => {}, []);
+const SwipeScreenTest = () => {
+  const navigation = useNavigation();
+  console.log(navigation);
   return (
     // eslint-disable-next-line global-require
     <View style={styles.containerHome}>
@@ -38,7 +35,7 @@ const SwipeScreenTest = ({ navigation }) => {
           </View>
         </View>
       </View> */}
-
+      <SlideModal />
       <View style={{ height: '100%' }}>
         <CardStack
           loop
@@ -56,7 +53,17 @@ const SwipeScreenTest = ({ navigation }) => {
             <TouchableHighlight
               activeOpacity={1}
               underlayColor="transparent"
-              onPress={() => navigation.navigate('ProfileScreen', { profileId: item.id })}
+              onPress={
+                () => {
+                  //  console.log(this.swiper.swipeLeft)
+                  navigation.navigate('ProfileScreen', {
+                    profileId: item.id,
+                    swipeLeft: () => this.swiper.swipeLeft(),
+                    swipeRight: () => this.swiper.swipeRight(),
+                  });
+                }
+                // eslint-disable-next-line react/jsx-curly-newline
+              }
               key={item.id}
             >
               <Card key={item.id} style={styles.cardr}>

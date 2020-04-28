@@ -1,15 +1,13 @@
 import React from 'react';
-import { ImageBackground, Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { BlurView } from 'expo-blur';
-import styles, { PRIMARY_COLOR } from '../assets/styles';
-import SwipeScreen from './SwipeScreen';
-import ProfileScreen from './ProfileScreen';
-import FiltersScreen from './FiltersScreen';
+import { PRIMARY_COLOR } from '../assets/styles';
+import SwipeScreen from '../containers/SwipeScreen';
+import ProfileScreen from '../containers/ProfileScreen';
 import Filters from '../components/Filters';
 
 const MainStack = createStackNavigator();
-const RootStack = createStackNavigator();
 
 const MainStackScreen = () => {
   return (
@@ -72,29 +70,4 @@ const MainStackScreen = () => {
   );
 };
 
-const Home = (props) => {
-  console.log(props);
-  return (
-    // eslint-disable-next-line global-require
-    <ImageBackground source={require('../assets/images/bg.png')} style={styles.bg}>
-      <RootStack.Navigator mode="card">
-        <RootStack.Screen
-          name="Main"
-          component={MainStackScreen}
-          options={{ headerShown: false }}
-        />
-        <RootStack.Screen
-          name="FiltersScreen"
-          component={FiltersScreen}
-          options={{
-            headerTitle: 'Filters',
-            headerBackTitle: ' ',
-            headerBackTitleStyle: { backgroundColor: 'yellow' },
-          }}
-        />
-      </RootStack.Navigator>
-    </ImageBackground>
-  );
-};
-
-export default Home;
+export default MainStackScreen;

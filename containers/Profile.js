@@ -6,7 +6,6 @@ import {
   ImageBackground,
   TouchableHighlight,
   TouchableOpacity,
-  Button,
 } from 'react-native';
 import styles from '../assets/styles';
 
