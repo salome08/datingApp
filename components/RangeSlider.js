@@ -11,14 +11,12 @@ const RangeSlider = (props) => {
         value={valueMin}
         onValueChange={(value) => {
           setValueMin(value);
-          console.log('valuemin', value);
         }}
       />
       <Slider
         value={valueMax}
         onValueChange={(value) => {
           setValueMax(value);
-          console.log('valuemax', value);
         }}
       />
     </View>

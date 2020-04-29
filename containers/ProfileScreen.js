@@ -1,12 +1,18 @@
 import React from 'react';
-import { ScrollView, View, Text, ImageBackground, TouchableOpacity } from 'react-native';
+import {
+  ScrollView,
+  View,
+  Text,
+  ImageBackground,
+  TouchableOpacity,
+  StatusBar,
+} from 'react-native';
 import { SimpleLineIcons, Ionicons } from '@expo/vector-icons';
 import styles, { PRIMARY_COLOR } from '../assets/styles';
 
 import ProfileItem from '../components/ProfileItem';
 // import Icon from '../../components/Icon';
 import Demo from '../assets/data/demo';
-import { ScreenStackHeaderRightView } from 'react-native-screens';
 
 const ProfileScreen = (props) => {
   const {
@@ -16,8 +22,6 @@ const ProfileScreen = (props) => {
     navigation,
     route,
   } = props;
-  console.log('swipeLeft', swipeLeft);
-  console.log('swipeRight', swipeRight);
   const {
     age,
     images,
@@ -30,17 +34,13 @@ const ProfileScreen = (props) => {
     name,
     // ashtags,
   } = Demo[profileId - 1];
-  console.log('nav options', route);
 
   const [visibleImage, setVisibleImage] = React.useState(0);
 
   const handleImageLeft = () => {
-    console.log('visibleImage', visibleImage);
     setVisibleImage(visibleImage - 1 < 0 ? images.length : visibleImage - 1);
   };
   const handleImageRight = () => {
-    console.log('visibleImage', visibleImage);
-
     setVisibleImage(visibleImage + 1 === images.length ? 0 : visibleImage + 1);
   };
 
@@ -55,6 +55,7 @@ const ProfileScreen = (props) => {
   return (
     // eslint-disable-next-line global-require
     <ImageBackground source={require('../assets/images/bg.png')} style={styles.bg}>
+      <StatusBar barStyle="light-content" backgroundColor="#6a51ae" />
       <ScrollView style={styles.containerProfile}>
         <ImageBackground source={images[visibleImage]} style={styles.photo}>
           <View style={styles.topProfile}>

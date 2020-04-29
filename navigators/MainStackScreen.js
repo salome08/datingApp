@@ -1,5 +1,6 @@
 import React from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, View } from 'react-native';
+// import { Header } from 'react-native-elements';
 import { createStackNavigator } from '@react-navigation/stack';
 import { BlurView } from 'expo-blur';
 import { PRIMARY_COLOR } from '../assets/styles';
@@ -7,6 +8,7 @@ import SwipeScreen from '../containers/SwipeScreen';
 import ProfileScreen from '../containers/ProfileScreen';
 import Filters from '../components/Filters';
 import TabNavigator from './TabNavigator';
+import MyHeader from '../components/Header';
 
 const MainStack = createStackNavigator();
 
@@ -30,27 +32,48 @@ const MainStackScreen = () => {
       }
     >
       <MainStack.Screen
-        name="SwipeScreen"
+        name="TabNavigator"
         component={TabNavigator}
         options={{
-          headerTitle: () => (
-            // <View style={{ alignItems: 'center' }}>
-            <Text
-              // xs={2}
-              style={{
-                color: PRIMARY_COLOR,
-                fontSize: 32,
-                fontWeight: 'bold',
-              }}
-            >
-              Zalma
-            </Text>
-            // </View>
-          ),
+          header: ({ scene, previous, navigation }) => {
+            // console.log('navigation', navigation);
+            // console.log('scene.route : ', scene.route);
+            console.log('options', scene.descriptor.options);
+
+            return scene.route.state && scene.route.state.index !== 1 ? null : (
+              <MyHeader />
+            );
+          },
+          headerStyle: {
+            // height: '10%',
+            backgroundColor: 'red',
+          },
+          headerTransparent: 'none',
+
+          headerTitle: (props) => {
+            console.log('scene.route : ', props);
+            // console.log('previous', previous);
+            // console.log('navigation', navigation);
+
+            return (
+              // <View style={{ alignItems: 'center' }}>
+              <Text
+                // xs={2}
+                style={{
+                  color: PRIMARY_COLOR,
+                  fontSize: 32,
+                  fontWeight: 'bold',
+                }}
+              >
+                Zalmar
+              </Text>
+              // </View>
+            );
+          },
           headerRight: () => <Filters />,
           // headerTransparent: true,
           headerBackground: () => (
-            <BlurView tint="light" intensity={8} style={StyleSheet.absoluteFill} />
+            <BlurView intensity={100} style={[StyleSheet.absoluteFill]} />
           ),
         }}
       />

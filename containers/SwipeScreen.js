@@ -1,13 +1,12 @@
 /* eslint-disable react/no-this-in-sfc */
 import React from 'react';
-import { View, TouchableHighlight } from 'react-native';
+import { View, TouchableHighlight, StatusBar } from 'react-native';
 import CardStack, { Card } from 'react-native-card-stack-swiper';
 import { useNavigation } from '@react-navigation/native';
 import CardItem from '../components/CardItem';
 
 import styles from '../assets/styles';
 import Demo from '../assets/data/demo';
-import SlideModal from '../components/SlideModal';
 
 const SwipeScreenTest = () => {
   const navigation = useNavigation();
@@ -35,8 +34,8 @@ const SwipeScreenTest = () => {
           </View>
         </View>
       </View> */}
-      <SlideModal />
-      <View style={{ height: '100%' }}>
+      <View style={{ height: '10%' }} />
+      <View style={{ height: '80%' }}>
         <CardStack
           loop
           verticalSwipe
@@ -44,7 +43,7 @@ const SwipeScreenTest = () => {
           disableBottomSwipe
           renderNoMoreCards={() => null}
           style={styles.cardStack}
-          cardContainerStyle={{ height: '80%' }}
+          cardContainerStyle={{ height: '100%' }}
           // eslint-disable-next-line react/no-this-in-sfc
           // eslint-disable-next-line no-return-assign
           ref={(swiper) => (this.swiper = swiper)}

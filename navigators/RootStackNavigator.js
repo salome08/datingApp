@@ -8,7 +8,6 @@ import MainStackScreen from './MainStackScreen';
 const RootStack = createStackNavigator();
 
 const RootStackNavigator = (props) => {
-  console.log(props);
   return (
     // eslint-disable-next-line global-require
     <ImageBackground source={require('../assets/images/bg.png')} style={styles.bg}>

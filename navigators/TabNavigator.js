@@ -10,7 +10,8 @@ import MessagesScreen from '../containers/Messages';
 
 const Tab = createBottomTabNavigator();
 
-const TabNavigator = () => {
+const TabNavigator = (props) => {
+  console.log(props);
   return (
     <Tab.Navigator
       initialRouteName="Swipe"

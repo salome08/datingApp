@@ -12,7 +12,7 @@ const Filters = () => {
       onPress={() => navigation.navigate('FiltersScreen')}
     >
       {/* <Text style={styles.filgersText}> */}
-      <FontAwesome name="filter" size={24} color="gray" />
+      <FontAwesome name="filter" size={22} color="gray" />
       {/* </Text> */}
     </TouchableOpacity>
   );

@@ -94,7 +94,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     position: 'absolute',
     width: '100%',
-    bottom: '2%',
+    bottom: '6%',
     shadowOpacity: 0.2,
   },
   button: {
@@ -118,7 +118,7 @@ export default StyleSheet.create({
     marginHorizontal: 7,
     alignItems: 'center',
     justifyContent: 'center',
-    shadowOpacity: 0.15,
+    shadowOpacity: 0.25,
     shadowRadius: 20,
     shadowColor: DARK_GRAY,
     shadowOffset: { height: 10, width: 0 },
@@ -323,13 +323,16 @@ export default StyleSheet.create({
 
   // CONTAINER - HOME
   containerHome: {
-    height: '100%',
-    marginTop: '6%',
+    flex: 1,
+    // paddingTop: '20%',
+    // height: '100%',
+    justifyContent: 'center',
   },
   cardStack: {
     borderRadius: 8,
     alignItems: 'center',
-    height: '100%',
+    // height: '100%',
+    flex: 1,
   },
 
   cardr: {
