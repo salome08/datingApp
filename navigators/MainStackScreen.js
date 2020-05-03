@@ -1,12 +1,11 @@
 import React from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
 // import { Header } from 'react-native-elements';
 import { createStackNavigator } from '@react-navigation/stack';
 import { BlurView } from 'expo-blur';
 import { PRIMARY_COLOR } from '../assets/styles';
-import SwipeScreen from '../containers/SwipeScreen';
 import ProfileScreen from '../containers/ProfileScreen';
-import Filters from '../components/Filters';
+import FilterButton from '../components/FilterButton';
 import TabNavigator from './TabNavigator';
 import MyHeader from '../components/Header';
 
@@ -14,51 +13,24 @@ const MainStack = createStackNavigator();
 
 const MainStackScreen = () => {
   return (
-    <MainStack.Navigator
-      headerMode="screen"
-      mode="modal"
-      screenOptions={
-        {
-          // cardOverlayEnabled: true,
-          // cardStyleInterpolator: ({ current: { progress } }) => ({
-          //   cardStyle: {
-          //     opacity: progress.interpolate({
-          //       inputRange: [0, 0.5, 0.9, 1],
-          //       outputRange: [0, 0.25, 0.7, 1],
-          //     }),
-          //   },
-          // }),
-        }
-      }
-    >
+    <MainStack.Navigator headerMode="screen" mode="modal">
       <MainStack.Screen
         name="TabNavigator"
         component={TabNavigator}
         options={{
-          header: ({ scene, previous, navigation }) => {
-            // console.log('navigation', navigation);
-            // console.log('scene.route : ', scene.route);
-            console.log('options', scene.descriptor.options);
-
+          header: ({ scene }) => {
             return scene.route.state && scene.route.state.index !== 1 ? null : (
               <MyHeader />
             );
           },
           headerStyle: {
-            // height: '10%',
             backgroundColor: 'red',
           },
           headerTransparent: 'none',
 
-          headerTitle: (props) => {
-            console.log('scene.route : ', props);
-            // console.log('previous', previous);
-            // console.log('navigation', navigation);
-
+          headerTitle: () => {
             return (
-              // <View style={{ alignItems: 'center' }}>
               <Text
-                // xs={2}
                 style={{
                   color: PRIMARY_COLOR,
                   fontSize: 32,
@@ -70,7 +42,7 @@ const MainStackScreen = () => {
               // </View>
             );
           },
-          headerRight: () => <Filters />,
+          headerRight: () => <FilterButton />,
           // headerTransparent: true,
           headerBackground: () => (
             <BlurView intensity={100} style={[StyleSheet.absoluteFill]} />
@@ -84,7 +56,8 @@ const MainStackScreen = () => {
           headerTransparent: true,
           headerTitle: ' ',
           headerBackTitle: ' ',
-          // headerLeft: () => <Button onPress={( navigation.navigate('')}>retour</Button>,
+          headerTintColor: PRIMARY_COLOR,
+          // headerLeft: () => <Text>Tst</Text>,
           // headerBackground: () => (
           //   <BlurView tint="light" intensity={100} style={StyleSheet.absoluteFill} />
           // ),

@@ -20,7 +20,6 @@ const ProfileScreen = (props) => {
       params: { profileId, swipeLeft, swipeRight },
     },
     navigation,
-    route,
   } = props;
   const {
     age,
@@ -44,18 +43,10 @@ const ProfileScreen = (props) => {
     setVisibleImage(visibleImage + 1 === images.length ? 0 : visibleImage + 1);
   };
 
-  // console.log('navigation.setOptions', navigation.setOptions);
-  // React.useLayoutEffect(() => {
-  //   navigation.setOptions({
-  //     swipeLeft: swipeLeft || null,
-  //     swipeRight: swipeRight || null,
-  //   });
-  // }, [swipeLeft, swipeRight]);
-
   return (
     // eslint-disable-next-line global-require
     <ImageBackground source={require('../assets/images/bg.png')} style={styles.bg}>
-      <StatusBar barStyle="light-content" backgroundColor="#6a51ae" />
+      <StatusBar barStyle="dark-content" backgroundColor="#6a51ae" />
       <ScrollView style={styles.containerProfile}>
         <ImageBackground source={images[visibleImage]} style={styles.photo}>
           <View style={styles.topProfile}>

@@ -1,39 +1,34 @@
 import React from 'react';
-import { View, ScrollView, SafeAreaView, Text, Slider } from 'react-native';
+import { View, ScrollView, TextInput, SafeAreaView, Text, Slider } from 'react-native';
 import SimpleCard from '../components/SimpleCard';
 import styles from '../assets/styles';
 import SwitchButton from '../components/SwitchButton';
+import ImagesDnd from '../components/ImagesDnd';
+import AshtagsEditSection from '../components/AshtagsEditSection';
+import Demo from '../assets/data/demo';
 
-const FiltersScreen = () => {
+const EditScreen = () => {
   const [valueMin, setValueMin] = React.useState(18);
+  const [scrollEnabled, setScrollEnabled] = React.useState(true);
+  const [bio, setBio] = React.useState('');
+  const myProfile = Demo[0];
+
   // const [valueMax, setValueMax] = React.useState(22);
   // const navigation = useNavigation();
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <ScrollView contentContainerStyle={{ marginHorizontal: '2%' }}>
+      <ScrollView
+        scrollEnabled={scrollEnabled}
+        contentContainerStyle={{ marginHorizontal: '2%' }}
+      >
         <View style={{ flex: 1, margin: '2%' }}>
           <SimpleCard>
             <View style={styles.simpleCardItem}>
-              <Text style={styles.filtersTitle}>Search Distance</Text>
+              <Text style={styles.filtersTitle}>Pictures</Text>
             </View>
-            <View style={styles.simpleCardSliderItem}>
-              {/* <RangeSlider
-                range={{
-                  start: 3000,
-                  end: 50000,
-                }}
-                rangeLabels={{
-                  start: '3K',
-                  end: '50K',
-                }}
-              /> */}
-              <Slider
-                step={1}
-                maximumValue={100}
-                value={valueMin}
-                onValueChange={setValueMin}
-              />
-              <Text>Min: {valueMin}</Text>
+            <View style={styles.simpleCardItem}>
+              <ImagesDnd setScrollEnabled={setScrollEnabled} user={myProfile} />
             </View>
             {/* <Button title="Hide modal" onPress={() => navigation.goBack()} /> */}
           </SimpleCard>
@@ -41,16 +36,28 @@ const FiltersScreen = () => {
         <View style={{ flex: 1, margin: '2%' }}>
           <SimpleCard>
             <View style={styles.simpleCardItem}>
-              <Text style={styles.filtersTitle}>Age</Text>
+              <Text style={styles.filtersTitle}>Bio</Text>
             </View>
-            <View style={styles.simpleCardSliderItem}>
-              <Slider
-                step={1}
-                maximumValue={100}
-                value={valueMin}
-                onValueChange={setValueMin}
+            <View style={styles.simpleCardInputItem}>
+              <TextInput
+                // style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
+                onChangeText={(text) => setBio(text)}
+                value={bio}
+                multiline
+                placeholder="Qui es-tu ?"
+                underlineColorAndroid="transparent"
               />
             </View>
+            {/* <Button title="Hide modal" onPress={() => navigation.goBack()} /> */}
+          </SimpleCard>
+        </View>
+        <View style={{ flex: 1, margin: '2%' }}>
+          <SimpleCard>
+            <View style={styles.simpleCardItem}>
+              <Text style={styles.filtersTitle}>HashTags</Text>
+            </View>
+            <AshtagsEditSection myProfile={myProfile} />
+
             {/* <Button title="Hide modal" onPress={() => navigation.goBack()} /> */}
           </SimpleCard>
         </View>
@@ -93,15 +100,19 @@ const FiltersScreen = () => {
         <View style={{ flex: 1, margin: '2%' }}>
           <SimpleCard>
             <View style={styles.simpleCardItem}>
-              <Text style={styles.filtersTitle}>Show Me</Text>
+              <Text style={styles.filtersTitle}>Height</Text>
             </View>
             <View style={styles.simpleCardItem}>
-              <Text style={styles.filtersSubtitle}>Men</Text>
+              <Text style={styles.filtersSubtitle}>Visible</Text>
               <SwitchButton />
             </View>
-            <View style={styles.simpleCardItem}>
-              <Text style={styles.filtersSubtitle}>Women</Text>
-              <SwitchButton />
+            <View style={styles.simpleCardSliderItem}>
+              <Slider
+                step={1}
+                maximumValue={100}
+                value={valueMin}
+                onValueChange={setValueMin}
+              />
             </View>
             {/* <Button title="Hide modal" onPress={() => navigation.goBack()} /> */}
           </SimpleCard>
@@ -111,4 +122,4 @@ const FiltersScreen = () => {
   );
 };
 
-export default FiltersScreen;
+export default EditScreen;

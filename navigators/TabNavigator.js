@@ -5,13 +5,12 @@ import { Ionicons } from '@expo/vector-icons';
 import SwipeScreen from '../containers/SwipeScreen';
 
 import { PRIMARY_COLOR } from '../assets/styles';
-import ProfileScreen from '../containers/Profile';
+import MyProfile from '../containers/MyProfile';
 import MessagesScreen from '../containers/Messages';
 
 const Tab = createBottomTabNavigator();
 
-const TabNavigator = (props) => {
-  console.log(props);
+const TabNavigator = () => {
   return (
     <Tab.Navigator
       initialRouteName="Swipe"
@@ -34,8 +33,8 @@ const TabNavigator = (props) => {
         }}
       /> */}
       <Tab.Screen
-        name="Profile"
-        component={ProfileScreen}
+        name="My Profile"
+        component={MyProfile}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="ios-person" size={size} color={color} />

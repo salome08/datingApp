@@ -8,17 +8,17 @@ const SimpleCard = ({ children }) => {
         flex: 1,
         backgroundColor: '#fff',
         // margin: '4%',
-        borderRadius: 5,
+        borderRadius: 8,
         // padding: '4%',
         shadowColor: '#000',
         shadowOffset: {
           width: 0,
-          height: 3,
+          height: 0,
         },
-        shadowOpacity: 0.27,
+        shadowOpacity: 0.1,
         shadowRadius: 4.65,
 
-        elevation: 6,
+        elevation: 0,
       }}
     >
       {children}

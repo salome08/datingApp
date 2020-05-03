@@ -1,20 +1,13 @@
 import React from 'react';
-import {
-  ScrollView,
-  View,
-  Text,
-  ImageBackground,
-  TouchableOpacity,
-  StatusBar,
-} from 'react-native';
-import { SimpleLineIcons, Ionicons } from '@expo/vector-icons';
-import styles, { PRIMARY_COLOR } from '../assets/styles';
+import { ScrollView, View, Text, ImageBackground, TouchableOpacity } from 'react-native';
+import { SimpleLineIcons } from '@expo/vector-icons';
+import styles from '../assets/styles';
 
 import ProfileItem from '../components/ProfileItem';
 // import Icon from '../../components/Icon';
 import Demo from '../assets/data/demo';
 
-const ProfileScreen = (props) => {
+const ProfileScreen = () => {
   // const {
   //   route: {
   //     params: { profileId },
@@ -43,18 +36,10 @@ const ProfileScreen = (props) => {
     setVisibleImage(visibleImage + 1 === images.length ? 0 : visibleImage + 1);
   };
 
-  // console.log('navigation.setOptions', navigation.setOptions);
-  // React.useLayoutEffect(() => {
-  //   navigation.setOptions({
-  //     swipeLeft: swipeLeft || null,
-  //     swipeRight: swipeRight || null,
-  //   });
-  // }, [swipeLeft, swipeRight]);
-
   return (
     // eslint-disable-next-line global-require
     <ImageBackground source={require('../assets/images/bg.png')} style={styles.bg}>
-      <StatusBar barStyle="light-content" backgroundColor="#6a51ae" />
+      {/* <StatusBar barStyle="light-content" backgroundColor="#6a51ae" /> */}
       <ScrollView style={styles.containerProfile}>
         <ImageBackground source={images[visibleImage]} style={styles.photo}>
           <View style={styles.topProfile}>

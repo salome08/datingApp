@@ -4,18 +4,18 @@ import { FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import styles from '../assets/styles';
 
-const Filters = () => {
+const EditButton = () => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
       style={styles.miniButton}
-      onPress={() => navigation.navigate('FiltersScreen')}
+      onPress={() => navigation.navigate('EditScreen')}
     >
       {/* <Text style={styles.filgersText}> */}
-      <FontAwesome name="filter" size={22} color="gray" />
+      <FontAwesome name="edit" size={22} color="gray" />
       {/* </Text> */}
     </TouchableOpacity>
   );
 };
 
-export default Filters;
+export default EditButton;

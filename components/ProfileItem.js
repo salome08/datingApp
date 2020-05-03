@@ -1,5 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
+import EditButton from './EditButton';
+
 import styles from '../assets/styles';
 
 import Icon from './Icon';
@@ -12,7 +14,9 @@ const ProfileItem = ({ age, info1, info2, info3, info4, location, matches, name 
           <Icon name="heart" /> {matches}% Match!
         </Text>
       </View>
-
+      <View style={{ alignItems: 'flex-end' }}>
+        <EditButton />
+      </View>
       <Text style={styles.name}>{name}</Text>
 
       <Text style={styles.descriptionProfileItem}>

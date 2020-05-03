@@ -1,6 +1,6 @@
 /* eslint-disable react/no-this-in-sfc */
 import React from 'react';
-import { View, TouchableHighlight, StatusBar } from 'react-native';
+import { View, TouchableHighlight } from 'react-native';
 import CardStack, { Card } from 'react-native-card-stack-swiper';
 import { useNavigation } from '@react-navigation/native';
 import CardItem from '../components/CardItem';
@@ -10,7 +10,6 @@ import Demo from '../assets/data/demo';
 
 const SwipeScreenTest = () => {
   const navigation = useNavigation();
-  console.log(navigation);
   return (
     // eslint-disable-next-line global-require
     <View style={styles.containerHome}>
@@ -54,7 +53,6 @@ const SwipeScreenTest = () => {
               underlayColor="transparent"
               onPress={
                 () => {
-                  //  console.log(this.swiper.swipeLeft)
                   navigation.navigate('ProfileScreen', {
                     profileId: item.id,
                     swipeLeft: () => this.swiper.swipeLeft(),
@@ -66,11 +64,6 @@ const SwipeScreenTest = () => {
               key={item.id}
             >
               <Card key={item.id} style={styles.cardr}>
-                {/* <View style={{ backgroundColor: '#47e', height: '70%' }}>
-                  <Text>hello</Text>
-                </View> */}
-
-                {/* <Text>Hellooooo</Text> */}
                 <CardItem
                   image={item.images[0]}
                   name={item.name}

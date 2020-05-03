@@ -1,8 +1,8 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Header } from 'react-native-elements';
 import { BlurView } from 'expo-blur';
-import Filters from './Filters';
+import FilterButton from './FilterButton';
 import { PRIMARY_COLOR } from '../assets/styles';
 
 const MyHeader = () => {
@@ -28,7 +28,7 @@ const MyHeader = () => {
           // backgroundColor: '#fff',
         },
       }}
-      rightComponent={() => <Filters />}
+      rightComponent={() => <FilterButton />}
     >
       <BlurView intensity={100} style={[StyleSheet.absoluteFill]} />
     </Header>
